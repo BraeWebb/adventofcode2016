@@ -61,7 +61,7 @@ def testPath(path):
 #testPath('R5, L5, R5, R3')
 
 def run(stdin):
-    testPath(stdin.readline())
+    testPath(stdin.splitlines()[0])
 
 if __name__ == "__main__":
-    run(sys.stdin)
+    run(sys.stdin.read())

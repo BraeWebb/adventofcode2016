@@ -1,3 +1,4 @@
+import sys
 import re
 
 class Output(object):
@@ -146,17 +147,20 @@ def generate_factory(commands):
             factory[bot].set_high(high)
     return factory
 
-with open('inputs.txt') as f:
+def run(stdin):
     # commands = '''value 5 goes to bot 2
     # bot 2 gives low to bot 1 and high to bot 0
     # value 3 goes to bot 1
     # bot 1 gives low to output 1 and high to bot 0
     # bot 0 gives low to output 2 and high to output 0
     # value 2 goes to bot 2'''.split('\n')
-    commands = f.read().splitlines()
+    commands = stdin.splitlines()
     print(find_responsible(generate_factory(commands), 17, 61))
     outputs = get_outputs(generate_factory(commands))
     product = 1
     for i in range(3):
         product *= sum(outputs[i])
     print(product)
+
+if __name__ == "__main__":
+    run(sys.stdin.read())

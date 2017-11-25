@@ -1,3 +1,5 @@
+import sys
+
 def decode(lines, sort_func=max):
     code = ''
     for i in range(len(lines[0])):
@@ -27,7 +29,10 @@ enarar'''
 #print(decode(code.split('\n'), sort_func=max))
 #print(decode(code.split('\n'), sort_func=min))
 
-with open('inputs.txt') as f:
-    lines = f.read().splitlines()
+def run(stdin):
+    lines = stdin.splitlines()
     print(decode(lines, sort_func=max))
     print(decode(lines, sort_func=min))
+
+if __name__ == "__main__":
+    run(sys.stdin.read())

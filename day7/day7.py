@@ -1,3 +1,5 @@
+import sys
+
 def has_code(code, check, sublen):
     for i in range(len(code) - (sublen-1)):
         subcode = code[i:i+sublen]
@@ -59,7 +61,9 @@ def support_ssl(code):
 #print(has_code('abba', abba, 4))
 #print(support_ssl('aaa[kek]eke'))
 
-with open('inputs.txt') as f:
-    print(sum(1 if support_tls(line) else 0 for line in f))
-    f.seek(0)
-    print(sum(1 if support_ssl(line) else 0 for line in f))
+def run(stdin):
+    print(sum(1 if support_tls(line) else 0 for line in stdin.splitlines()))
+    print(sum(1 if support_ssl(line) else 0 for line in stdin.splitlines()))
+
+if __name__ == "__main__":
+    run(sys.stdin.read())

@@ -1,3 +1,5 @@
+import sys
+
 class Grid(object):
     def __init__(self, x, y):
         self.size = (x, y)
@@ -40,9 +42,9 @@ class Grid(object):
 # grid.rotate_x(1, 1)
 # grid.print()
 
-with open('inputs.txt') as f:
+def run(stdin):
     grid = Grid(50, 6)
-    for line in f:
+    for line in stdin.splitlines():
         if line[:4] == 'rect':
             grid.draw(*(int(x) for x in line[5:].split('x')))
         if line[:6] == 'rotate':
@@ -51,3 +53,6 @@ with open('inputs.txt') as f:
             grid.rotate_y(y, by) if line[7:10] == 'row' else grid.rotate_x(y, by)
     print(grid.lit())
     grid.print()
+
+if __name__ == "__main__":
+    run(sys.stdin.read())

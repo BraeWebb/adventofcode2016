@@ -1,3 +1,5 @@
+import sys
+
 def parse(text):
     markers = {}
     pointer = 0
@@ -79,8 +81,11 @@ partH = '(6697x8)(172x15)(164x10)(1x9)N(151x2)(7x2)MOYJQSA(24x4)BSZRAIBTDPFAAHQW
 print(len(''.join(list(parse_v3(partH)))))
 # add 12
 
-with open('inputs.txt') as f:
-    line = f.readline()
+def run(stdin):
+    line = stdin.splitlines()[0]
     print(len(mutate(*parse(line)))-4)
     #print(parse_v2(line))
     #print(len(parse_v2(line)))
+
+if __name__ == "__main__":
+    run(sys.stdin.read())

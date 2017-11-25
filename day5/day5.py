@@ -31,9 +31,9 @@ def advanced_decode(code):
 #print(advanced_decode('abc'))
 
 def run(stdin):
-    code = stdin.readline()
+    code = stdin.splitlines()[0]
     print(decode(code))
     print(advanced_decode(code))
 
 if __name__ == "__main__":
-    run(sys.stdin)
+    run(sys.stdin.read())
