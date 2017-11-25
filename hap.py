@@ -11,6 +11,7 @@ DIRECTORY_STRUCTURE = ["*.py", "*.in"]
 TIMEOUT = 60
 PYTHON_FILE = "*.py"
 INPUT_FILE = "*.in"
+OUTPUT_FILE = "*.py.out"
 LOAD_CMD = "load"
 TIMES = 10
 TIMER_TIMEOUT = 6
@@ -101,6 +102,7 @@ def run_day(day):
 
     python_file = f"{root}/{PYTHON_FILE.replace('*', day)}"
     input_file = f"{root}/{INPUT_FILE.replace('*', day)}"
+    output_file = f"{root}/{OUTPUT_FILE.replace('*', day)}"
     
     with open(input_file) as f:
         file_input = f.read()
@@ -125,7 +127,11 @@ def run_day(day):
 
     log(f"{day} output:")
     try:
-        log(run_process().stdout, LogLevel.DEBUG)
+        output = run_process().stdout
+        log(output, LogLevel.DEBUG)
+        with open(output_file, "w") as file:
+            file.write(output)
+            
     except subprocess.TimeoutExpired:
         log(f"{day} timed out after {TIMEOUT} seconds", level=LogLevel.WARNING)
     
