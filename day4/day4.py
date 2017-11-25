@@ -1,3 +1,5 @@
+import sys
+
 ALPHABET = list('abcdefghijklmnopqrstuvwxyz')
 
 def is_real_room(encrypted_name, checksum):
@@ -39,8 +41,12 @@ def decode_sector(sector):
 
 #print(decode_sector('qzmt-zixmtkozy-ivhz-343[sadw]'))
 
-with open('inputs.txt') as f:
-    print(sum_sectors(f.read().splitlines()))
-    f.seek(0)
-    for room in f:
-        print(*decode_sector(room))
+def run(stdin):
+    print(sum_sectors(stdin.splitlines()))
+    for room in stdin.splitlines():
+        result = decode_sector(room)
+        if result[0] == 'northpole-object-storage':
+            print(result[1])
+
+if __name__ == "__main__":
+    run(sys.stdin.read())

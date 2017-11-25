@@ -1,3 +1,5 @@
+import sys
+
 class KeyPad(object):
     def __init__(self):
         self.location = [0, 0]
@@ -35,9 +37,12 @@ def getCode(moves, keypadClass):
     keypad = keypadClass()
     return ''.join([str(keypad.move(row)) for row in moves]).upper()
 
-with open('inputs.txt') as f:
-    moves = f.read().splitlines()
+def run(stdin):
+    moves = stdin.splitlines()
     code = getCode(moves, KeyPad)
     print(code)
     advanced = getCode(moves, AdvancedKeyPad)
     print(advanced)
+
+if __name__ == "__main__":
+    run(sys.stdin.read())

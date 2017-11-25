@@ -1,3 +1,5 @@
+import sys
+
 def is_triangle(sides, verbose=False):
     possible = True
     for id, length in enumerate(sides):
@@ -11,8 +13,8 @@ def to_int(str_list):
     return [int(i) for i in str_list]
 #print(is_triangle([5, 10, 25], verbose=True))
 
-with open('inputs.txt') as f:
-    side_list = f.read().splitlines()
+def test01(stdin):
+    side_list = stdin.splitlines()
     triangles = 0
     for sides in side_list:
         sides = to_int(sides.split())
@@ -21,9 +23,9 @@ with open('inputs.txt') as f:
     print(triangles)
 
 
-with open('inputs.txt') as f:
+def test02(stdin):
     sides = []
-    lines = f.read().splitlines()
+    lines = stdin.splitlines()
     for i in range(3):
         for line in lines:
             sides.append(line.split()[i])
@@ -32,3 +34,10 @@ with open('inputs.txt') as f:
         if is_triangle(to_int(triangle)):
             triangles += 1
     print(triangles)
+
+def run(stdin):
+    test01(stdin)
+    test02(stdin)
+
+if __name__ == "__main__":
+    run(sys.stdin.read())

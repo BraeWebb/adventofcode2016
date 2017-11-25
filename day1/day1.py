@@ -1,3 +1,5 @@
+import sys
+
 class Grid(object):
     def __init__(self):
         self.location = [0,0]
@@ -58,6 +60,8 @@ def testPath(path):
 #testPath('R2, R2, R2')
 #testPath('R5, L5, R5, R3')
 
-with open('inputs.txt') as f:
-    path = f.readline()
-    testPath(path)
+def run(stdin):
+    testPath(stdin.readline())
+
+if __name__ == "__main__":
+    run(sys.stdin)
