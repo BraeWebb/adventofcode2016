@@ -1,3 +1,4 @@
+import sys
 import hashlib
 
 def decode(code):
@@ -29,7 +30,10 @@ def advanced_decode(code):
 #print(decode('abc'))
 #print(advanced_decode('abc'))
 
-with open('inputs.txt') as f:
-    code = f.readline()
+def run(stdin):
+    code = stdin.readline()
     print(decode(code))
     print(advanced_decode(code))
+
+if __name__ == "__main__":
+    run(sys.stdin)
