@@ -155,7 +155,7 @@ def run(stdin):
     # bot 0 gives low to output 2 and high to output 0
     # value 2 goes to bot 2'''.split('\n')
     commands = stdin.splitlines()
-    print(find_responsible(generate_factory(commands), 17, 61))
+    print(find_responsible(generate_factory(commands), 17, 61).get_id())
     outputs = get_outputs(generate_factory(commands))
     product = 1
     for i in range(3):

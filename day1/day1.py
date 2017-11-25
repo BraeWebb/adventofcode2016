@@ -51,10 +51,8 @@ def walkPath(path):
 
 def testPath(path):
     grid = walkPath(path)
-    print('Finish Location: {}'.format(grid.get_location()))
-    print('Blocks from Finish: {}'.format(grid.get_blocks(grid.get_location())))
-    print('First Location Visited Twice: {}'.format(grid.get_occurs()))
-    print('Blocks from First Location Visited Twice: {}'.format(grid.get_blocks(grid.get_occurs())))
+    print(grid.get_blocks(grid.get_location()))
+    print(grid.get_blocks(grid.get_occurs()))
 
 #testPath('R2, L3')
 #testPath('R2, R2, R2')
